@@ -14,7 +14,7 @@ console.log('Get connection ...');
 
 var conn = mysql.createConnection({
     database: 'kursach',
-    host: "25.21.56.235",
+    host: "25.22.131.112",
     user: "sergo",
     password: "12345"
 });
