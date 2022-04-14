@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Добавление пользователя</title>
+    <title>Список</title>
     <meta charset="utf-8" />
-    <style>.field{width:180px;}</style>
 </head>
+<body>
+<div class="search">
+    <label>
+        <input class="search_input" type="text" name="search_content" placeholder="Поиск">
+        <input type="button" value="Найти" onclick="search_generate_url('button')">
+        <input type="button" value="Найти" >
+    </label>
+</div>
+<form method="get" action="http://localhost:3000/button">
+    <input type="text" name="value" value="0000000">
+    <input type="text" name="value2" value="hello">
+    <input type="submit" value="Отправить">
+</form>
+<h1>Список пользователей</h1>
+<p><a href="/create">Добавить пользователя</a></p>
+<p><a href="/button">button</a></p>
 <table>
-    <tr><th>Номер_екіпажу</th><th>Клас</th><th></th></tr>
+    <tr><th>Name</th><th>Age</th><th></th></tr>
     {{#each users}}
         <tr>
-            <td>{{this.Номер_екіпажу}}</td>
+            <td>{{this.Марка_літака}}</td>
             <td>{{this.Клас}}</td>
             <td>
-                <a href="/edit/{{this.Номер_екіпажу}}">Edit</a>|
-                <form action="delete/{{this.Номер_екіпажу}}" method="POST" style="display:inline;">
+                <a href="/edit/{{this.Марка_літака}}">Edit</a>|
+                <form action="delete/{{this.Клас}}" method="POST" style="display:inline;">
                     <input type="submit" value="Delete" />
                 </form>
             </td>
@@ -21,4 +36,7 @@
     {{/each}}
 </table>
 </body>
+<script>
+
+</script>
 </html>

@@ -15,19 +15,10 @@ const pool = mysql.createPool({
 });
 
 app.set("view engine", "hbs");
-
+app.use(express.static(__dirname + '/views'));
 // получение списка пользователей
 app.get("/", function(req, res){
-    pool.query("SELECT * FROM екіпаж_адміністратор", function(err, data) {
-        if(err) return console.log(err);
-        res.render("index.hbs", {
-            users: data
-        });
-    });
-});
-// кнопка для запиту 1
-app.get("/button", function(req, res){
-    pool.query("SELECT * FROM екіпаж_адміністратор", function(err, data) {
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
         res.render("index.hbs", {
             users: data
@@ -35,55 +26,47 @@ app.get("/button", function(req, res){
     });
 });
 
+
+app.get("/create", urlencodedParser, function(req, res){
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
+        if(err) return console.log(err);
+        res.render("create.hbs", {
+            users: data
+        });
+    });
+});
 // возвращаем форму для добавления данных
-app.get("/create", function(req, res){
-    res.render("create.hbs");
+app.get("/create/:value", urlencodedParser, function(req, res){
+    const value = req.params.value;
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=?",[value], function(err, data) {
+        if(err) return console.log(err);
+        res.render("create.hbs", {
+            users: data
+        });
+    });
 });
 // получаем отправленные данные и добавляем их в БД
-app.post("/create", urlencodedParser, function (req, res) {
 
-    if(!req.body) return res.sendStatus(400);
-    const name = req.body.Номер_екіпажу;
-    const age = req.body.Клас;
-    pool.query("INSERT INTO users (name, age) VALUES (?,?)", [name, age], function(err, data) {
+//buttton1
+app.get("/button", function (req, res) {
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
-        res.redirect("/");
-    });
-});
-
-// получем id редактируемого пользователя, получаем его из бд и отправлям с формой редактирования
-app.get("/edit/:id", function(req, res){
-    const id = req.params.id;
-    pool.query("SELECT * FROM екіпаж_адміністратор WHERE id=?", [id], function(err, data) {
-        if(err) return console.log(err);
-        res.render("edit.hbs", {
-            user: data[0]
+        res.render("button.hbs", {
+            users: data
         });
     });
 });
-// получаем отредактированные данные и отправляем их в БД
-app.post("/edit", urlencodedParser, function (req, res) {
-
-    if(!req.body) return res.sendStatus(400);
-    const name = req.body.name;
-    const age = req.body.age;
-    const id = req.body.id;
-
-    pool.query("UPDATE users SET name=?, age=? WHERE id=?", [name, age, id], function(err, data) {
+app.get("/button?value=?&value2=?", urlencodedParser, function(req, res){
+    const value = req.params.value;
+    const value2 = req.params.value2;
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? Номер_літака=?",[value,value2], function(err, data) {
         if(err) return console.log(err);
-        res.redirect("/");
+        res.render("button.hbs", {
+            users: data
+        });
     });
 });
 
-// получаем id удаляемого пользователя и удаляем его из бд
-app.post("/delete/:id", function(req, res){
-
-    const id = req.params.id;
-    pool.query("DELETE FROM users WHERE id=?", [id], function(err, data) {
-        if(err) return console.log(err);
-        res.redirect("/");
-    });
-});
 
 app.listen(3000, function(){
     console.log("Сервер ожидает подключения...");

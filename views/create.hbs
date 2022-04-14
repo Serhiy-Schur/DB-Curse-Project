@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список пользователей</title>
+    <title>Список</title>
     <meta charset="utf-8" />
 </head>
 <body>
+<div class="search">
+    <label>
+        <input class="search_input" type="text" name="search_content" placeholder="Поиск">
+        <input type="button" value="Найти" onclick="search_generate_url('create')">
+    </label>
+</div>
 <h1>Список пользователей</h1>
 <p><a href="/create">Добавить пользователя</a></p>
 <p><a href="/button">button</a></p>
-<div>
-
-</div>
 <table>
     <tr><th>Name</th><th>Age</th><th></th></tr>
     {{#each users}}
@@ -18,7 +21,7 @@
             <td>{{this.Марка_літака}}</td>
             <td>{{this.Номер_літака}}</td>
             <td>
-                <a href="/edit/{{this.Номер_літака}}">Edit</a>|
+                <a href="/edit/{{this.Марка_літака}}">Edit</a>|
                 <form action="delete/{{this.Номер_літака}}" method="POST" style="display:inline;">
                     <input type="submit" value="Delete" />
                 </form>
@@ -28,6 +31,10 @@
 </table>
 </body>
 <script>
-
+    function search_generate_url(type) {
+        let search_content = document.getElementsByClassName('search_input')[0].value
+        let url = '/' + type + '/' + search_content;
+        location.assign(url);
+    }
 </script>
-<html>
+</html>
