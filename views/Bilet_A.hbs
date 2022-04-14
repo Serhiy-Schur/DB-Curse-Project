@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Білет Адміністратор</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div class="search">
+    <label>
+        <input class="search_input" type="text" name="content" placeholder="Дата_продажу">
+        <input class="search_input" type="text" name="content2" placeholder="Рейс">
+        <input type="button" value="Найти" onclick="search_generate_url('Bilet_A')">
+    </label>
+</div>
+
+<h1>Білет Адміністратор</h1>
+
+<p><a href="/">На головну</a></p>
+<table>
+    <tr><th>Номер_білета</th><th>Авіакомпанія</th><th>Літак</th><th>Пасажир</th><th>Дата_продажу</th><th>Рейс</th></tr>
+    {{#each users}}
+        <tr>
+            <td>{{this.Номер_білета}}</td>
+            <td>{{this.Авіакомпанія}}</td>
+            <td>{{this.Літак}}</td>
+            <td>{{this.Пасажир}}</td>
+            <td>{{this.Дата_продажу}}</td>
+            <td>{{this.Рейс}}</td>
+        </tr>
+    {{/each}}
+</table>
+</body>
+<script>
+    function search_generate_url(type) {
+        let search_content = document.getElementsByName('content')[0].value
+        let search_content2 = document.getElementsByName('content2')[0].value
+        let url = '/' + type + '/' + search_content+ '/' + search_content2;
+        location.assign(url);
+    }
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пасажир Адміністратор</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div class="search">
+    <label>
+        <input class="search_input" type="text" name="content" placeholder="Стать">
+        <input class="search_input" type="text" name="content2" placeholder="Країна">
+        <input type="button" value="Найти" onclick="search_generate_url('Pasazhyr_A')">
+    </label>
+</div>
+
+<h1>Пасажир Адміністратор</h1>
+
+<p><a href="/">На головну</a></p>
+<table>
+    <tr><th>Номер_пасажира</th><th>ПІБ_пасажира</th><th>Дата_народження</th><th>Номер_телефону_пасажира</th><th>Стать_пасажира</th><th>Країна_пасажира</th></tr>
+    {{#each users}}
+        <tr>
+            <td>{{this.Номер_пасажира}}</td>
+            <td>{{this.ПІБ_пасажира}}</td>
+            <td>{{this.Дата_народження}}</td>
+            <td>{{this.Номер_телефону_пасажира}}</td>
+            <td>{{this.Стать}}</td>
+            <td>{{this.Країна}}</td>
+        </tr>
+    {{/each}}
+</table>
+</body>
+<script>
+    function search_generate_url(type) {
+        let search_content = document.getElementsByName('content')[0].value
+        let search_content2 = document.getElementsByName('content2')[0].value
+        let url = '/' + type + '/' + search_content+ '/' + search_content2;
+        location.assign(url);
+    }
+</script>
+</html>
