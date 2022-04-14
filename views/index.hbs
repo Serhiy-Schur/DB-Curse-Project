@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список пользователей</title>
+    <title>Аеропорт</title>
     <meta charset="utf-8" />
 </head>
 <body>
-<h1>Список пользователей</h1>
-<p><a href="/create">Добавить пользователя</a></p>
-<p><a href="/Ekipag_A">екіпаж_адміністратор</a></p>
-<div>
-
-</div>
-<table>
-    <tr><th>Name</th><th>Age</th><th></th></tr>
-    {{#each users}}
-        <tr>
-            <td>{{this.Марка_літака}}</td>
-            <td>{{this.Номер_літака}}</td>
-            <td>
-                <a href="/edit/{{this.Номер_літака}}">Edit</a>|
-                <form action="delete/{{this.Номер_літака}}" method="POST" style="display:inline;">
-                    <input type="submit" value="Delete" />
-                </form>
-            </td>
-        </tr>
-    {{/each}}
-</table>
+    <h1>Аеропорт</h1>
+    <div class="zapyt_admin">
+        <p><a href="/Ekipag_A">Екіпаж_адміністратор</a></p>
+        <p><a href="/Litak_A">Літак_адміністратор</a></p>
+        <p><a href="/Pasazhyr_A">Пасажир_адміністратор</a></p>
+        <p><a href="/Aviakompaniya_A">Авіакомпанія_адміністратор</a></p>
+        <p><a href="/Bilet_A">Білет_адміністратор</a></p>
+        <p><a href="/Rays_A">Рейс_адміністратор</a></p>
+        <p><a href="/Aeroport_A">Аеропорт_адміністратор</a></p>
+        <p><a href="/Marshrut_A">Маршрут_адміністратор</a></p>
+    </div>
 </body>
+
 <script>
 
 </script>
+
+<style>
+    h1 {
+        text-align: center;
+        font-family: Calibri, serif;
+        color: green;
+        font-size: 35px;
+    }
+    .zapyt_admin {
+        display: block;
+        text-align: center;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    p {
+        border: 2px solid green;
+        padding: 5px 5px 5px;
+        border-radius: 6px;
+        background-color: bisque;
+    }
+    a {
+        font-size: 20px;
+        font-family: Calibri, serif;
+        color: green;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
 <html>

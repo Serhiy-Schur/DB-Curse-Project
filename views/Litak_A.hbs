@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Літак Адміністратор</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div class="search">
+    <label>
+        <input class="search_input" type="text" name="content" placeholder="Марка літака">
+        <input class="search_input" type="text" name="content2" placeholder="Авіакомпанія власник">
+        <input type="button" value="Найти" onclick="search_generate_url('Litak_A')">
+    </label>
+</div>
+
+<h1>Літак Адміністратор</h1>
+
+<p><a href="/">На головну</a></p>
+<table>
+    <tr><th>Номер_літака</th><vr><th>Тип_літака</th><th>Марка_літака</th><th>Модель_літака</th><th>Авіакомпанія_власник</th></tr>
+    {{#each users}}
+        <tr>
+            <td>{{this.Номер_літака}}</td><td>{{this.Тип_літака}}</td><td>{{this.Марка_літака}}</td><td>{{this.Модель_літака}}</td><td>{{this.Авіакомпанія_власник}}</td>
+        </tr>
+    {{/each}}
+</table>
+</body>
+<script>
+    function search_generate_url(type) {
+        let search_content = document.getElementsByName('content')[0].value
+        let search_content2 = document.getElementsByName('content2')[0].value
+        let url = '/' + type + '/' + search_content+ '/' + search_content2;
+        location.assign(url);
+    }
+</script>
+</html>

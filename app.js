@@ -80,6 +80,33 @@ app.get("/create/:value/:value2", urlencodedParser, function(req, res){
         });
     });
 });
+
+
+//////////////////////// Запити Аднімістратор
+
+//Запит Літак
+app.get("/Litak_A", function (req, res) {
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Litak_A.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Litak_A/:value/:value2", urlencodedParser, function(req, res){
+    //SELECT Тип_літака, Номер_літака, Модель_літака FROM kursach.літак_адміністратор WHERE Марка_літака =? AND Авіакомпанія_власник =?
+
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака =? AND Авіакомпанія_власник =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Litak_A.hbs", {
+            users: data
+        });
+    });
+});
+
 app.listen(3000, function(){
     console.log("Сервер ожидает подключения...");
 });
