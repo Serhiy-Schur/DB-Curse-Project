@@ -7,36 +7,35 @@
 <body>
 <div class="search">
     <label>
-        <input class="search_input" type="text" name="search_content" placeholder="Поиск">
+        <input class="search_input" type="text" name="content" placeholder="Поиск">
+        <input class="search_input" type="text" name="content2" placeholder="Поиск">
         <input type="button" value="Найти" onclick="search_generate_url('button')">
-        <input type="button" value="Найти" >
     </label>
 </div>
-<form method="get" action="http://localhost:3000/button">
-    <input type="text" name="value" value="0000000">
-    <input type="text" name="value2" value="hello">
-    <input type="submit" value="Отправить">
-</form>
+
 <h1>Список пользователей</h1>
-<p><a href="/create">Добавить пользователя</a></p>
-<p><a href="/button">button</a></p>
+
+<p><a href="/">На головну</a></p>
 <table>
     <tr><th>Name</th><th>Age</th><th></th></tr>
     {{#each users}}
         <tr>
-            <td>{{this.Марка_літака}}</td>
+            <td>{{this.data}}</td>
             <td>{{this.Клас}}</td>
             <td>
-                <a href="/edit/{{this.Марка_літака}}">Edit</a>|
-                <form action="delete/{{this.Клас}}" method="POST" style="display:inline;">
-                    <input type="submit" value="Delete" />
-                </form>
+
+
             </td>
         </tr>
     {{/each}}
 </table>
 </body>
 <script>
-
+    function search_generate_url(type) {
+        let search_content = document.getElementsByName('content')[0].value
+        let search_content2 = document.getElementsByName('content2')[0].value
+        let url = '/' + type + '/' + search_content+ '/' + search_content2;
+        location.assign(url);
+}
 </script>
 </html>

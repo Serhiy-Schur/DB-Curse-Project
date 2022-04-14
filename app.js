@@ -26,7 +26,7 @@ app.get("/", function(req, res){
     });
 });
 
-
+//запит 1
 app.get("/create", urlencodedParser, function(req, res){
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
@@ -35,7 +35,7 @@ app.get("/create", urlencodedParser, function(req, res){
         });
     });
 });
-// возвращаем форму для добавления данных
+
 app.get("/create/:value", urlencodedParser, function(req, res){
     const value = req.params.value;
     pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=?",[value], function(err, data) {
@@ -43,11 +43,10 @@ app.get("/create/:value", urlencodedParser, function(req, res){
         res.render("create.hbs", {
             users: data
         });
+
     });
 });
-// получаем отправленные данные и добавляем их в БД
-
-//buttton1
+//запит 2
 app.get("/button", function (req, res) {
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
@@ -56,18 +55,29 @@ app.get("/button", function (req, res) {
         });
     });
 });
-app.get("/button?value=?&value2=?", urlencodedParser, function(req, res){
-    const value = req.params.value;
-    const value2 = req.params.value2;
-    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? Номер_літака=?",[value,value2], function(err, data) {
+app.get("/button/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? AND Номер_літака=?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("button.hbs", {
             users: data
         });
     });
 });
-
-
+//запит 3
+app.get("/create/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? AND Номер_літака=?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("create.hbs", {
+            users: data
+        });
+    });
+});
 app.listen(3000, function(){
     console.log("Сервер ожидает подключения...");
 });
