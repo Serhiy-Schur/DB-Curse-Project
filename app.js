@@ -47,21 +47,23 @@ app.get("/create/:value", urlencodedParser, function(req, res){
     });
 });
 //запит 2
-app.get("/button", function (req, res) {
+app.get("/Ekipag_A", function (req, res) {
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
-        res.render("button.hbs", {
+        res.render("Ekipag_A.hbs", {
             users: data
         });
     });
 });
-app.get("/button/:value/:value2", urlencodedParser, function(req, res){
+app.get("/Ekipag_A/:value/:value2", urlencodedParser, function(req, res){
+    //SELECT Номер_екіпажу, Кількість_пілотів, Кількість_бортпровідників FROM kursach.екіпаж_адміністратор WHERE  Кількість_кухарів > ? AND Клас =?;
+
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? AND Номер_літака=?",[value,value2], function(err, data) {
+    pool.query("SELECT * FROM екіпаж_адміністратор WHERE  Кількість_кухарів > ? AND Клас =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
-        res.render("button.hbs", {
+        res.render("Ekipag_A.hbs", {
             users: data
         });
     });
