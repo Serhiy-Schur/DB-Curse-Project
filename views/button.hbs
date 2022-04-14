@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление пользователя</title>
+    <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
+</head>
+<table>
+    <tr><th>Номер_екіпажу</th><th>Клас</th><th></th></tr>
+    {{#each users}}
+        <tr>
+            <td>{{this.Номер_екіпажу}}</td>
+            <td>{{this.Клас}}</td>
+            <td>
+                <a href="/edit/{{this.Номер_екіпажу}}">Edit</a>|
+                <form action="delete/{{this.Номер_екіпажу}}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+</body>
+</html>
