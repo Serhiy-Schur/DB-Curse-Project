@@ -22,7 +22,7 @@ app.get("/", function(req, res){
         });
     });
 });
-// возвращаем форму для добавления данных
+// добавления данных
 app.get("/create", function(req, res){
     res.render("create.hbs");
 });
