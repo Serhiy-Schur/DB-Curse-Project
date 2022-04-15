@@ -317,21 +317,21 @@ app.get("/Aeroport_P/:value/:value2", urlencodedParser, function(req, res){
     });
 });
 //SELECT  * FROM тарифи_на_перевезення_тварин_пасажир WHERE Ціна =? AND Габарити(в*ш*г) =?
-app.get("/Taryf_Tvatyna_P", function (req, res) {
+app.get("/Taryf_Tvaryna_P", function (req, res) {
     pool.query("SELECT  * FROM тарифи_на_перевезення_тварин_пасажир", function(err, data) {
         if(err) return console.log(err);
-        res.render("Taryf_Tvatyna_P.hbs", {
+        res.render("Taryf_Tvaryna_P.hbs", {
             users: data
         });
     });
 });
-app.get("/Taryf_Tvatyna_P/:value/:value2", urlencodedParser, function(req, res){
+app.get("/Taryf_Tvaryna_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT  * FROM тарифи_на_перевезення_тварин_пасажир WHERE Ціна =? AND Габарити(в*ш*г) =?",[value,value2], function(err, data) {
+    pool.query("SELECT  * FROM тарифи_на_перевезення_тварин_пасажир WHERE Ціна =? AND Габарити =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
-        res.render("Taryf_Tvatyna_P.hbs", {
+        res.render("Taryf_Tvaryna_P.hbs", {
             users: data
         });
     });
