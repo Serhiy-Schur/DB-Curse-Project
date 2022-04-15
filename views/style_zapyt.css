@@ -44,6 +44,17 @@ input[type=button] {
     color: white;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+}
+input[type=submit] {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #79bd01;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 .search{
     display: block;
@@ -92,4 +103,21 @@ a {
     font-family: Calibri, serif;
     font-weight: bold;
     text-decoration: none;
+}
+label{
+    font-family: Calibri, serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+.create{
+    text-align: center;
+    font-family: Calibri, serif;
+}
+.field{
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 300px;
 }

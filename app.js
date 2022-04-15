@@ -334,7 +334,7 @@ app.get("/Kvutok_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT  * FROM квиток_пасажир WHERE Ціна < AND Дата_продажу <?",[value,value2], function(err, data) {
+    pool.query("SELECT  * FROM квиток_пасажир WHERE Ціна <? AND Дата_продажу <?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Kvutok_P.hbs", {
             users: data
