@@ -46,7 +46,22 @@ app.post("/create", urlencodedParser, function (req, res) {
     const data7 = req.body.data7;
     const table = req.body.table;
 
-    let search = "INSERT INTO "+table+" ("+value1+", "+value2+", "+value3+", "+value4+", "+value5+", "+value6+", "+value7+")"+" VALUES (?,?,?,?,?,?,?)"
+    let i = ''
+    let arr = [data1, data2, data3, data4, data5, data6, data7]
+    let a = arr.length-1
+    console.log(a)
+   arr.forEach(function (item){
+       if(item !== null || item !== ' '){
+           i += '?';
+
+       }
+       if(item !== arr[a]){
+           i += ','
+       }
+   })
+
+
+    let search = "INSERT INTO "+table+" ("+value1+", "+value2+", "+value3+", "+value4+", "+value5+", "+value6+", "+value7+")"+" VALUES ("+i+")"
     pool.query(search, [data1, data2, data3, data4, data5, data6, data7], function(err, data) {
         if(err) return console.log(err);
         res.redirect("/create");
