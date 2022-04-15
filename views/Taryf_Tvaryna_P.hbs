@@ -7,9 +7,9 @@
 <body>
 <div class="search">
     <label>
-        <input class="search_input" type="text" name="content" placeholder="Країна розташування">
-        <input class="search_input" type="text" name="content2" placeholder="Назва аеропорту">
-        <input type="button" value="Найти" onclick="search_generate_url('Aeroport_A')">
+        <input class="search_input" type="text" name="content" placeholder="Ціна">
+        <input class="search_input" type="text" name="content2" placeholder="Габарити(в*ш*г)">
+        <input type="button" value="Найти" onclick="search_generate_url('Taryf_Tvaryna_P')">
     </label>
 </div>
 
@@ -17,14 +17,18 @@
 
 <p><a href="/">На головну</a></p>
 <table>
-    <tr><th>Кількість_літаків</th><th>Місто_розташування</th><th>Кількість_терміналів</th><th>Країна_розташування</th><th>Назва_аеропорту</th></tr>
+    <tr><th>Тварина</th>
+        <th>Вага(кг)</th>
+        <th>Назва тарифу для тварин</th>
+        <th>Ціна</th>
+        <th>Габарити(в*ш*г)</th></tr>
     {{#each users}}
         <tr>
-            <td>{{this.Кількість_літаків}}</td>
-            <td>{{this.Місто_розташування}}</td>
-            <td>{{this.Кількість_терміналів}}</td>
-            <td>{{this.Країна_розташування}}</td>
-            <td>{{this.Назва_аеропорту}}</td>
+            <td>{{this.Тварина}}</td>
+            <td>{{this.Вага}}</td>
+            <td>{{this.Назва_тарифу_для_тварин}}</td>
+            <td>{{this.Ціна}}</td>
+            <td>{{this.Габарити}}</td>
         </tr>
     {{/each}}
 </table>
