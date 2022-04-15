@@ -211,7 +211,171 @@ app.get("/Marshrut_A/:value/:value2", urlencodedParser, function(req, res){
         });
     });
 });
+////////Анна
+//Запит рейс
+//SELECT* FROM рейс_пасажир WHERE Дата_прибуття = ? AND Країна_прибуття =?;
+app.get("/Rays_P", function (req, res) {
+    pool.query("SELECT * FROM рейс_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Rays_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Rays_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT * FROM рейс_пасажир WHERE Дата_прибуття = ? AND Країна_прибуття =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Rays_P.hbs", {
+            users: data
+        });
+    });
+});
 
+//Запит літак
+app.get("/Litak_P", function (req, res) {
+    pool.query("SELECT * FROM літак_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Litak_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Litak_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT * FROM літак_пасажир WHERE Дата_випуску =? AND Марка =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Litak_P.hbs", {
+            users: data
+        });
+    });
+});
+
+//Запит квиток
+app.get("/Kvutok_P", function (req, res) {
+    pool.query("SELECT * FROM квиток_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Kvutok_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Kvutok_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM квиток_пасажир WHERE Ціна < AND Дата_продажу <?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Kvutok_P.hbs", {
+            users: data
+        });
+    });
+});
+
+//екіпаж
+app.get("/Ekipag_P", function (req, res) {
+    pool.query("SELECT * FROM екіпаж_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Ekipag_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Ekipag_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM екіпаж_пасажир WHERE Кількість_вильтів =? AND Стаж =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Ekipag_P.hbs", {
+            users: data
+        });
+    });
+});
+// аеропорт
+app.get("/Aeroport_P", function (req, res) {
+    pool.query("SELECT  * FROM аеропорт_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Aeroport_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Aeroport_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM аеропорт_пасажир WHERE Кількість_літаків >? AND Кількість_персоналу <?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Aeroport_P.hbs", {
+            users: data
+        });
+    });
+});
+//SELECT  * FROM тарифи_на_перевезення_тварин_пасажир WHERE Ціна =? AND Габарити(в*ш*г) =?
+app.get("/Taryf_Tvatyna_P", function (req, res) {
+    pool.query("SELECT  * FROM тарифи_на_перевезення_тварин_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Taryf_Tvatyna_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Taryf_Tvatyna_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM тарифи_на_перевезення_тварин_пасажир WHERE Ціна =? AND Габарити(в*ш*г) =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Taryf_Tvatyna_P.hbs", {
+            users: data
+        });
+    });
+});
+//SELECT  * FROM тарифи_для_пасажирів_пасажир WHERE Посадковий_талоном =? AND Ціна =?
+app.get("/Taryf_Pasazhyr_P", function (req, res) {
+    pool.query("SELECT  * FROM тарифи_для_пасажирів_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Taryf_Pasazhyr_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Taryf_Pasazhyr_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM тарифи_для_пасажирів_пасажир WHERE Посадковий_талоном =? AND Ціна =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Taryf_Pasazhyr_P.hbs", {
+            users: data
+        });
+    });
+});
+//авіатермінали
+app.get("/Aviaterminal_P", function (req, res) {
+    pool.query("SELECT  * FROM авіатермінали_пасажир", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Aviaterminal_P.hbs", {
+            users: data
+        });
+    });
+});
+app.get("/Aviaterminal_P/:value/:value2", urlencodedParser, function(req, res){
+    const value = req.params['value'];
+    console.log(value);
+    const value2 = req.params['value2'];
+    pool.query("SELECT  * FROM авіатермінали_пасажир WHERE Кількість_стійок_паспортного_контролю =? AND Кількість_стійок_реєстрації =?",[value,value2], function(err, data) {
+        if(err) return console.log(err);
+        res.render("Aviaterminal_P.hbs", {
+            users: data
+        });
+    });
+});
 app.listen(3000, function(){
     console.log("Сервер ожидает подключения...");
 });
