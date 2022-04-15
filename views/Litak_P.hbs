@@ -16,7 +16,12 @@
         <input type="button" value="Знайти" onclick="search_generate_url('Litak_P')">
 </div>
 <table>
-    <tr><th>Номер</th><th>Модель</th><th>Марка</th><th>Кількість пасажирів</th><th>Дата випуску</th></tr>
+    <tr><th>Номер</th>
+        <th>Модель</th>
+        <th>Марка</th>
+        <th>Кількість пасажирів</th>
+        <th>Місткість_багажу</th>
+        <th>Дата випуску</th></tr>
     {{#each users}}
         <tr>
             <td>{{this.Номер}}</td>
