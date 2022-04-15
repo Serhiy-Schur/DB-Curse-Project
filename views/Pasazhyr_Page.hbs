@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Аеропорт</title>
+    <title>Пасажир</title>
     <meta charset="utf-8" />
 </head>
 <body>
 <div class="navbar">
-
+    <div class="navbar__btn__back" ><a href="/" style="color: black">На головну</a></div>
 </div>
-    <h1>Аеропорт</h1>
-    <div class="zapyt">
-        <p><a href="/Admin">Адміністратор</a></p>
-        <p><a href="/Pasazhyr">Пасажир</a></p>
-    </div>
+<h1>Пасажир Аеропорта</h1>
+<div class="zapyt">
+    <p><a href="/Ekipag_P">Екіпаж</a></p>
+    <p><a href="/Aviaterminal_P">Авіатермінали</a></p>
+    <p><a href="/Aeroport_P">Аеропорт</a></p>
+    <p><a href="/Rays_P">Рейс</a></p>
+    <p><a href="/Kvutok_P">Квиток</a></p>
+    <p><a href="/Taryf_Pasazhyr_P">Тарифи для пасажирів</a></p>
+    <p><a href="/Taryf_Tvaryna_P">Тарифи на перевезення тварин</a></p>
+    <p><a href="/Litak_P">Літак</a></p>
+</div>
 </body>
 
 <script>
@@ -32,6 +38,13 @@
         display: flex;
         align-items: center;
         padding: 0 15px;
+    }
+    .navbar__btn__back {
+        font-size: 18px;
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
     }
     h1 {
         text-align: center;

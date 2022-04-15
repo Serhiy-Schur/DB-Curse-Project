@@ -1,10 +1,7 @@
-
 const mysql = require("mysql2");
 const express = require("express");
-
 const app = express();
 const urlencodedParser = express.urlencoded({extended: false});
-
 
 const pool = mysql.createPool({
     host: '25.22.131.112',
@@ -16,7 +13,7 @@ const pool = mysql.createPool({
 
 app.set("view engine", "hbs");
 app.use(express.static(__dirname + '/views'));
-// получение списка пользователей
+///Головна Сторінка
 app.get("/", function(req, res){
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
         if(err) return console.log(err);
@@ -25,41 +22,25 @@ app.get("/", function(req, res){
         });
     });
 });
+///Сторінка Адміністратора
+app.get("/Admin", function(req, res){
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Admin_Page.hbs", {
+            users: data
+        });
+    });
+});
 
-// //запит 1
-// app.get("/create", urlencodedParser, function(req, res){
-//     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
-//         if(err) return console.log(err);
-//         res.render("create.hbs", {
-//             users: data
-//         });
-//     });
-// });
-//
-// app.get("/create/:value", urlencodedParser, function(req, res){
-//     const value = req.params.value;
-//     pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=?",[value], function(err, data) {
-//         if(err) return console.log(err);
-//         res.render("create.hbs", {
-//             users: data
-//         });
-//
-//     });
-// });
-// //запит 2
-//
-// //запит 3
-// app.get("/create/:value/:value2", urlencodedParser, function(req, res){
-//     const value = req.params['value'];
-//     console.log(value);
-//     const value2 = req.params['value2'];
-//     pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака=? AND Номер_літака=?",[value,value2], function(err, data) {
-//         if(err) return console.log(err);
-//         res.render("create.hbs", {
-//             users: data
-//         });
-//     });
-// });
+///Сторінка Пасажира
+app.get("/Pasazhyr", function(req, res){
+    pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
+        if(err) return console.log(err);
+        res.render("Pasazhyr_Page.hbs", {
+            users: data
+        });
+    });
+});
 
 
 //////////////////////// Запити Аднімістратор
