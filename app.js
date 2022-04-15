@@ -35,17 +35,21 @@ app.post("/create", urlencodedParser, function (req, res) {
     const value3 = req.body.value3;
     const value4 = req.body.value4;
     const value5 = req.body.value5;
+    const value6 = req.body.value6;
+    const value7 = req.body.value7;
     const data1 = req.body.data1;
     const data2 = req.body.data2;
     const data3 = req.body.data3;
     const data4 = req.body.data4;
     const data5 = req.body.data5;
+    const data6 = req.body.data6;
+    const data7 = req.body.data7;
     const table = req.body.table;
 
-    let search = "INSERT INTO "+table+"("+value1+","+value2+","+value3+","+value4+","+value5+")"+"VALUES (?,?)"
-    pool.query(search, [data1, data2, data3, data4, data5], function(err, data) {
+    let search = "INSERT INTO "+table+" ("+value1+", "+value2+", "+value3+", "+value4+", "+value5+", "+value6+", "+value7+")"+" VALUES (?,?,?,?,?,?,?)"
+    pool.query(search, [data1, data2, data3, data4, data5, data6, data7], function(err, data) {
         if(err) return console.log(err);
-        res.redirect("/");
+        res.redirect("/create");
     });
 });
 ///Сторінка Адміністратора
