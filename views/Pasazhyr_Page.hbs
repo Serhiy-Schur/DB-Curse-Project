@@ -6,18 +6,18 @@
 </head>
 <body>
 <div class="navbar">
-    <div class="navbar__btn__back" ><a href="/" style="color: black">На головну</a></div>
+    <div><a class="navbar__btn__back" href="/">На головну</a></div>
 </div>
 <h1>Пасажир Аеропорта</h1>
 <div class="zapyt">
-    <p><a href="/Ekipag_P">Екіпаж</a></p>
-    <p><a href="/Aviaterminal_P">Авіатермінали</a></p>
-    <p><a href="/Aeroport_P">Аеропорт</a></p>
-    <p><a href="/Rays_P">Рейс</a></p>
-    <p><a href="/Kvutok_P">Квиток</a></p>
-    <p><a href="/Taryf_Pasazhyr_P">Тарифи для пасажирів</a></p>
-    <p><a href="/Taryf_Tvaryna_P">Тарифи на перевезення тварин</a></p>
-    <p><a href="/Litak_P">Літак</a></p>
+    <a href="/Ekipag_P">Екіпаж</a>
+    <a href="/Aviaterminal_P">Авіатермінали</a>
+    <a href="/Aeroport_P">Аеропорт</a>
+    <a href="/Rays_P">Рейс</a>
+    <a href="/Kvutok_P">Квиток</a>
+    <a href="/Taryf_Pasazhyr_P">Тарифи для пасажирів</a>
+    <a href="/Taryf_Tvaryna_P">Тарифи на перевезення тварин</a>
+    <a href="/Litak_P">Літак</a>
 </div>
 </body>
 
@@ -30,7 +30,6 @@
         padding: 0;
         margin: 0;
     }
-
     .navbar {
         height: 50px;
         background-color: #eff1f9;
@@ -40,11 +39,12 @@
         padding: 0 15px;
     }
     .navbar__btn__back {
-        font-size: 18px;
+        padding: 0;
+        font-size: 25px;
         width: 100%;
         cursor: pointer;
         display: flex;
-        justify-content: space-between;
+        color: black; background-color: #eef0f8;
     }
     h1 {
         text-align: center;
@@ -59,23 +59,19 @@
         margin-left: auto;
         margin-right: auto;
     }
-    p {
+    a {
         color: white;
         background-color: #79bd01;
         padding: 10px 20px;
         text-align: center;
         display: inline-block;
-
         border-radius: 12px;
         cursor: pointer;
         width: 300px;
         margin-top: 10px;
         margin-bottom: 10px;
-    }
-    a {
         font-size: 25px;
         font-family: Calibri, serif;
-        color: #ffffff;
         font-weight: bold;
         text-decoration: none;
     }
