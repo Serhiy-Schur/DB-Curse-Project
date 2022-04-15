@@ -3,19 +3,18 @@
 <head>
     <title>Літак Адміністратор</title>
     <meta charset="utf-8" />
+    <link href="/style_zapyt.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="navbar">
+    <div><a class="navbar__btn__back" href="/Admin">Назад</a></div>
+</div>
+<h1>Літак Адміністратор</h1>
 <div class="search">
-    <label>
         <input class="search_input" type="text" name="content" placeholder="Марка літака">
         <input class="search_input" type="text" name="content2" placeholder="Авіакомпанія власник">
-        <input type="button" value="Найти" onclick="search_generate_url('Litak_A')">
-    </label>
+        <input type="button" value="Знайти" onclick="search_generate_url('Litak_A')">
 </div>
-
-<h1>Літак Адміністратор</h1>
-
-<p><a href="/">На головну</a></p>
 <table>
     <tr><th>Номер_літака</th><th>Тип_літака</th><th>Марка_літака</th><th>Модель_літака</th><th>Авіакомпанія_власник</th></tr>
     {{#each users}}

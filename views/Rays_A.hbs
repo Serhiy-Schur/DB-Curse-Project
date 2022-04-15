@@ -3,19 +3,18 @@
 <head>
     <title>Рейс Адміністратор</title>
     <meta charset="utf-8" />
+    <link href="/style_zapyt.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="navbar">
+    <div><a class="navbar__btn__back" href="/Admin">Назад</a></div>
+</div>
+<h1>Рейс Адміністратор</h1>
 <div class="search">
-    <label>
         <input class="search_input" type="text" name="content" placeholder="Час в шляху">
         <input class="search_input" type="text" name="content2" placeholder="Дата вильоту">
-        <input type="button" value="Найти" onclick="search_generate_url('Rays_A')">
-    </label>
+        <input type="button" value="Знайти" onclick="search_generate_url('Rays_A')">
 </div>
-
-<h1>Рейс Адміністратор</h1>
-
-<p><a href="/">На головну</a></p>
 <table>
     <tr><th>Номер_рейсу</th><th>Маршрут</th><th>Літак_перевізник</th><th>Екіпаж</th><th>Час_вильоту</th><th>Час_в_шляху</th><th>Дата_вильоту</th></tr>
     {{#each users}}

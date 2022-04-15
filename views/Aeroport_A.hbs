@@ -3,19 +3,18 @@
 <head>
     <title>Аеропорт Адміністратор</title>
     <meta charset="utf-8" />
+    <link href="/style_zapyt.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="search">
-    <label>
-        <input class="search_input" type="text" name="content" placeholder="Країна розташування">
-        <input class="search_input" type="text" name="content2" placeholder="Назва аеропорту">
-        <input type="button" value="Найти" onclick="search_generate_url('Aeroport_A')">
-    </label>
+<div class="navbar">
+    <div><a class="navbar__btn__back" href="/Admin">Назад</a></div>
 </div>
-
 <h1>Аеропорт Адміністратор</h1>
-
-<p><a href="/">На головну</a></p>
+<div class="search">
+    <input class="search_input" type="text" name="content" placeholder="Країна розташування">
+    <input class="search_input" type="text" name="content2" placeholder="Назва аеропорту">
+    <input type="button" value="Знайти" onclick="search_generate_url('Aeroport_A')">
+</div>
 <table>
     <tr><th>Кількість_літаків</th><th>Місто_розташування</th><th>Кількість_терміналів</th><th>Країна_розташування</th><th>Назва_аеропорту</th></tr>
     {{#each users}}
