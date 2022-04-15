@@ -42,7 +42,22 @@ app.get("/Pasazhyr", function(req, res){
     });
 });
 
+app.get("/create", function(req, res){
+    res.render("create.hbs");
+});
+// получаем отправленные данные и добавляем их в БД
+app.post("/create", urlencodedParser, function (req, res) {
 
+    if(!req.body) return res.sendStatus(400);
+    const table = req.body.age;
+    const name = req.body.name;
+    const age = req.body.age;
+
+    pool.query("INSERT INTO users (name, age) VALUES (?,?)", [name, age], function(err, data) {
+        if(err) return console.log(err);
+        res.redirect("/");
+    });
+});
 //////////////////////// Запити Аднімістратор
 //Запит Екіпаж
 app.get("/Ekipag_A", function (req, res) {
