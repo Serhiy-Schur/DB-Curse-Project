@@ -7,22 +7,20 @@
 </head>
 <body>
 <div class="navbar">
-    <div><a class="navbar__btn__back" href="/Admin">Назад</a></div>
+    <div><a class="navbar__btn__back" href="/Pasazhyr">Назад</a></div>
 </div>
 <h1>Аеропорт Пасажир</h1>
 <div class="search">
-    <label>
-        <input class="search_input" type="text" name="content" placeholder="Кількість_літаків>...">
-        <input class="search_input" type="text" name="content2" placeholder="Кількість_персоналу<...">
-        <input type="button" value="Найти" onclick="search_generate_url('Aeroport_A')">
-    </label>
+    <input class="search_input" type="text" name="content" placeholder="Кількість_літаків>...">
+    <input class="search_input" type="text" name="content2" placeholder="Кількість_персоналу<...">
+    <input type="button" value="Найти" onclick="search_generate_url('Aeroport_A')">
 </div>
-
-
-
-<p><a href="/">На головну</a></p>
 <table>
-    <tr><th>Назва</th><th>Країна</th><th>Адреса</th><th>Кількість_літаків</th><th>Кількість_персоналу</th></tr>
+    <tr><th>Назва</th>
+        <th>Країна</th>
+        <th>Адреса</th>
+        <th>Кількість_літаків</th>
+        <th>Кількість_персоналу</th></tr>
     {{#each users}}
         <tr>
             <td>{{this.Назва}}</td>
