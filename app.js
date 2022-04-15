@@ -22,6 +22,32 @@ app.get("/", function(req, res){
         });
     });
 });
+// возвращаем форму для добавления данных
+app.get("/create", function(req, res){
+    res.render("create.hbs");
+});
+// получаем отправленные данные и добавляем их в БД
+app.post("/create", urlencodedParser, function (req, res) {
+
+    if(!req.body) return res.sendStatus(400);
+    const value1 = req.body.value1;
+    const value2 = req.body.value2;
+    const value3 = req.body.value3;
+    const value4 = req.body.value4;
+    const value5 = req.body.value5;
+    const data1 = req.body.data1;
+    const data2 = req.body.data2;
+    const data3 = req.body.data3;
+    const data4 = req.body.data4;
+    const data5 = req.body.data5;
+    const table = req.body.table;
+
+    let search = "INSERT INTO "+table+"("+value1+","+value2+","+value3+","+value4+","+value5+")"+"VALUES (?,?)"
+    pool.query(search, [data1, data2, data3, data4, data5], function(err, data) {
+        if(err) return console.log(err);
+        res.redirect("/");
+    });
+});
 ///Сторінка Адміністратора
 app.get("/Admin", function(req, res){
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
