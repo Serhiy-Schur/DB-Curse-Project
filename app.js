@@ -355,7 +355,7 @@ app.get("/Ekipag_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT  * FROM екіпаж_пасажир WHERE Кількість_вильтів =? AND Стаж =?",[value,value2], function(err, data) {
+    pool.query("SELECT  * FROM екіпаж_пасажир WHERE Кількість_вильотів =? AND Стаж =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Ekipag_P.hbs", {
             users: data
@@ -415,7 +415,7 @@ app.get("/Taryf_Pasazhyr_P/:value/:value2", urlencodedParser, function(req, res)
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT  * FROM тарифи_для_пасажирів_пасажир WHERE Посадковий_талоном =? AND Ціна =?",[value,value2], function(err, data) {
+    pool.query("SELECT  * FROM тарифи_для_пасажирів_пасажир WHERE Посадковий_талон =? AND Ціна =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Taryf_Pasazhyr_P.hbs", {
             users: data
@@ -435,7 +435,7 @@ app.get("/Aviaterminal_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT  * FROM авіатермінали_пасажир WHERE Кількість_стійок_паспортного_контролю =? AND Кількість_стійок_реєстрації =?",[value,value2], function(err, data) {
+    pool.query("SELECT  * FROM авіатермінали_пасажир WHERE Стійки_паспортного_контроля =? AND Стійки_реєстрації =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Aviaterminal_P.hbs", {
             users: data
