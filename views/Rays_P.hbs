@@ -22,6 +22,7 @@
         <th>Дата вильоту</th>
         <th>Дата прибуття</th>
         <th>Країна прибуття</th>
+        <th>Номер екіпажу</th>
     </tr>
     {{#each users}}
         <tr>
@@ -31,6 +32,7 @@
             <td>{{this.Дата_вильоту}}</td>
             <td>{{this.Дата_прибуття}}</td>
             <td>{{this.Країна_прибуття}}</td>
+            <td>{{this.Екіпаж}}</td>
         </tr>
     {{/each}}
 </table>
@@ -42,5 +44,7 @@
         let url = '/' + type + '/' + search_content+ '/' + search_content2;
         location.assign(url);
     }
+
+
 </script>
 </html>

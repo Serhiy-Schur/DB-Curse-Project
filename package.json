@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "hbs": "^4.2.0",
+    "moment": "^2.29.2",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {

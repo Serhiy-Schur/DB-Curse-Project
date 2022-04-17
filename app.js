@@ -281,7 +281,7 @@ app.get("/Marshrut_A/:value/:value2", urlencodedParser, function(req, res){
 //Запит рейс
 //SELECT* FROM рейс_пасажир WHERE Дата_прибуття = ? AND Країна_прибуття =?;
 app.get("/Rays_P", function (req, res) {
-    pool.query("SELECT * ,DATE_FORMAT(Дата_прибуття, '%d.%m.%Y') FROM рейс_пасажир", function(err, data) {
+    pool.query("SELECT * FROM рейс_пасажир", function(err, data) {
         if(err) return console.log(err);
         res.render("Rays_P.hbs", {
             users: data
@@ -292,7 +292,7 @@ app.get("/Rays_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT * ,DATE_FORMAT(Дата_прибуття, '%d.%m.%Y') FROM рейс_пасажир WHERE  Дата_прибуття = ? AND Країна_прибуття =?",[value,value2], function(err, data) {
+    pool.query("SELECT * ,FORMAT(Дата_прибуття, '%d.%m.%Y') FROM рейс_пасажир WHERE  Дата_прибуття = ? AND Країна_прибуття =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Rays_P.hbs", {
             users: data
