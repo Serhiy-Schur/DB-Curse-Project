@@ -88,8 +88,8 @@ app.post("/delete", urlencodedParser, function (req, res) {
 
     const table = req.body.table;
 
-    let search = "DELETE FROM "+table+"WHERE"+value1+"="+data1+"AND"+value2+"="+data2+
-    pool.query(search, function(err, data) {
+    let search = "DELETE FROM "+table+" WHERE "+value1+"=?"+"AND "+value2+"=?"
+    pool.query(search,[data1,data2], function(err, data) {
         if(err) return console.log(err);
         res.redirect("/delete");
     });
