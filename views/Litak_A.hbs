@@ -12,18 +12,18 @@
 <h1>Літак Адміністратор</h1>
 <div class="search">
         <input class="search_input" type="text" name="content" placeholder="Марка літака">
-        <input class="search_input" type="text" name="content2" placeholder="Авіакомпанія власник">
+        <input class="search_input" type="text" name="content2" placeholder="Номер авіакомпанії">
         <input type="button" value="Знайти" onclick="search_generate_url('Litak_A')">
 </div>
 <table>
-    <tr><th>Номер_літака</th><th>Тип_літака</th><th>Марка_літака</th><th>Модель_літака</th><th>Авіакомпанія_власник</th></tr>
+    <tr><th>Номер_літака</th><th>Тип_літака</th><th>Марка_літака</th><th>Модель_літака</th><th>Номер_авіакомпанії</th></tr>
     {{#each users}}
         <tr>
             <td>{{this.Номер_літака}}</td>
             <td>{{this.Тип_літака}}</td>
             <td>{{this.Марка_літака}}</td>
             <td>{{this.Модель_літака}}</td>
-            <td>{{this.Авіакомпанія_власник}}</td>
+            <td>{{this.Номер_авіакомпанії}}</td>
         </tr>
     {{/each}}
 </table>

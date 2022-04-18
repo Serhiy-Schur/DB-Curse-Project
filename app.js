@@ -149,7 +149,7 @@ app.get("/Litak_A/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака =? AND Авіакомпанія_власник =?",[value,value2], function(err, data) {
+    pool.query("SELECT * FROM літак_адміністратор WHERE Марка_літака =? AND Номер_авіакомпанії =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Litak_A.hbs", {
             users: data
@@ -191,7 +191,7 @@ app.get("/Bilet_A/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
-    pool.query("SELECT * FROM білет_адміністратор WHERE Дата_продажу =? AND Рейс =?",[value,value2], function(err, data) {
+    pool.query("SELECT * FROM білет_адміністратор WHERE Дата_продажу =? AND Номер_рейсу =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Bilet_A.hbs", {
             users: data
