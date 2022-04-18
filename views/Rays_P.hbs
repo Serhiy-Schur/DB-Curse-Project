@@ -14,6 +14,8 @@
     <input class="search_input" type="text" name="content" placeholder="Дата прибуття">
     <input class="search_input" type="text" name="content2" placeholder="Країна прибуття">
     <input type="button" value="Знайти" onclick="search_generate_url('Rays_P')">
+    <form method="POST" class="create">
+    <input type="checkbox" value="Delete" name="a" onclick="search_generate_url('Rays_P')"></form>
 </div>
 <table>
     <tr><th>Номер рейсу</th>
@@ -41,8 +43,15 @@
     function search_generate_url(type) {
         let search_content = document.getElementsByName('content')[0].value
         let search_content2 = document.getElementsByName('content2')[0].value
+        document.addEventListener('change',function (){
+            const chk = event.target;
+            if(chk.tagName==='INPUT' && chk.type==='checkbox'){
+                chk.name='delete';
+            }})
         let url = '/' + type + '/' + search_content+ '/' + search_content2;
         location.assign(url);
+
+
     }
 
 

@@ -72,6 +72,28 @@ app.post("/create", urlencodedParser, function (req, res) {
         res.redirect("/create");
     });
 });
+
+app.get("/delete", function(req, res){
+    res.render("delete.hbs");
+});
+// получаем отправленные данные и добавляем их в БД
+app.post("/delete", urlencodedParser, function (req, res) {
+
+    if(!req.body) return res.sendStatus(400);
+    const value1 = req.body.value1;
+    const value2 = req.body.value2;
+
+    const data1 = req.body.data1;
+    const data2 = req.body.data2;
+
+    const table = req.body.table;
+
+    let search = "DELETE FROM "+table+"WHERE"+value1+"="+data1+"AND"+value2+"="+data2+
+    pool.query(search, function(err, data) {
+        if(err) return console.log(err);
+        res.redirect("/delete");
+    });
+});
 ///Сторінка Адміністратора
 app.get("/Admin", function(req, res){
     pool.query("SELECT * FROM літак_адміністратор", function(err, data) {
@@ -89,23 +111,6 @@ app.get("/Pasazhyr", function(req, res){
         res.render("Pasazhyr_Page.hbs", {
             users: data
         });
-    });
-});
-
-app.get("/create", function(req, res){
-    res.render("create.hbs");
-});
-
-app.post("/create", urlencodedParser, function (req, res) {
-
-    if(!req.body) return res.sendStatus(400);
-    const table = req.body.age;
-    const name = req.body.name;
-    const age = req.body.age;
-
-    pool.query("INSERT INTO users (name, age) VALUES (?,?)", [name, age], function(err, data) {
-        if(err) return console.log(err);
-        res.redirect("/");
     });
 });
 
@@ -292,6 +297,7 @@ app.get("/Rays_P/:value/:value2", urlencodedParser, function(req, res){
     const value = req.params['value'];
     console.log(value);
     const value2 = req.params['value2'];
+
     pool.query("SELECT * ,FORMAT(Дата_прибуття, '%d.%m.%Y') FROM рейс_пасажир WHERE  Дата_прибуття = ? AND Країна_прибуття =?",[value,value2], function(err, data) {
         if(err) return console.log(err);
         res.render("Rays_P.hbs", {
